@@ -26,6 +26,21 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+    <%= f.fields_for :shop_attributes do |sf| %>
+        <div class="field">
+          <%= sf.label :name %>
+          <%= sf.text_field :name, placeholder: "Shop Name" %>
+        </div>
+        <div class="field">
+          <%= sf.label :address %>
+          <%= sf.text_area :address, placeholder: "Shop Address", id: 'address' %>
+        </div>
+
+        <input type="button" id="check-location" value="Check Location">
+
+        <div id="map"></div>
+    <% end %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

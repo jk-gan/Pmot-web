@@ -1,8 +1,8 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
-<% if current_user %>
-  <p>Logged in as <%= current_user.email %></p>
+<% if current_owner %>
+  <p>Logged in as <%= current_owner.email %></p>
   <%= image_tag @qr %>
   <%= link_to 'Log out', destroy_owner_session_path, method: "delete" %>
 <% else %>
