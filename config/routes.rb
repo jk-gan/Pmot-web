@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
   devise_for :owners, controllers: { registrations: "owner_registrations" }
   devise_for :users, controllers: { registrations: "user_registrations" }
 
