@@ -5,6 +5,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <style media="screen">
+    #map {
+      height: 400px;
+      width: 400px;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,6 +22,11 @@
 <% end %>
 
 <%= yield %>
+
+</script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFpszjIOdHth6I8QY88U5v2Mc8ce9m2PQ&callback=initMap">
+</script>
 
 </body>
 </html>
