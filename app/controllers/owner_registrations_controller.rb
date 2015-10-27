@@ -13,5 +13,4 @@ class OwnerRegistrationsController < Devise::RegistrationsController
                                   shop_attributes: [:id, :owner_id, :name, :address]
                                   )
   end
-
 end
