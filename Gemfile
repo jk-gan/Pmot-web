@@ -35,6 +35,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'rqrcode_png'
 gem 'activeadmin', github: 'activeadmin'
+gem 'grape'
+gem 'rubocop', require: false
+gem 'protected_attributes'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

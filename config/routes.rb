@@ -4,7 +4,15 @@ Rails.application.routes.draw do
   devise_for :owners, controllers: { registrations: "owner_registrations" }
   devise_for :users, controllers: { registrations: "user_registrations" }
 
+  mount API::Root => '/'
+
   root 'home#index'
+
+  # namespace :api, path: '/', defaults: { format: 'json' } do
+  #   scope module: :v1 do
+  #
+  #   end
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
