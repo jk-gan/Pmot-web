@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  description: MyText
+  term_and_condition: MyText
+  expires_at: 2015-11-02 21:00:14
+
+two:
+  name: MyText
+  description: MyText
+  term_and_condition: MyText
+  expires_at: 2015-11-02 21:00:14
