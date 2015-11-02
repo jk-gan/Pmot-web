@@ -18,7 +18,7 @@ module API
           requires :token, type: String, desc: "Access token."
           # requires :index, type: String, desc: "Index."
         end
-        desc "Return list of all owners"
+        desc "Return one owners"
         get '/:id' do
           authenticate!
           Owner.find(params[:id])
