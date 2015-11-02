@@ -11,7 +11,17 @@ module API
         desc "Return list of all owners"
         get do
           authenticate!
-          Owner.first
+          Owner.all
+        end
+
+        params do
+          requires :token, type: String, desc: "Access token."
+          # requires :index, type: String, desc: "Index."
+        end
+        desc "Return list of all owners"
+        get '/:id' do
+          authenticate!
+          Owner.find(params[:id])
         end
       end
 
