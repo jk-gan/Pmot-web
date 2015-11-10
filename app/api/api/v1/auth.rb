@@ -12,10 +12,10 @@ module API
         end
 
         post :login do
-          owner = Owner.find_by(email: params[:email].downcase)
+          user = User.find_by(email: params[:email].downcase)
 
-          if owner && owner.valid_password?(params[:password])
-            key = ApiKey.create(user_id: owner.id)
+          if user && user.authenticate(params[:password])
+            key = ApiKey.create(user_id: user.id)
             {token: key.access_token}
           else
             error!('Unauthorized.', 401)

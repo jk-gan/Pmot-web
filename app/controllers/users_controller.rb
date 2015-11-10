@@ -3,14 +3,15 @@ class UsersController < ApplicationController
     User.new
   end
 
-  def create
-    user.new(user_params)
-    if @user.save
-      @user.created = true
-    else
-      @user.created = false
-    end
-  end
+  # def create(params)
+  #   @user = User.new(params)
+  #   if @user.save
+  #     @user.created = true
+  #   else
+  #     @user.created = false
+  #   end
+  #   @user
+  # end
 
   private
   def user_params

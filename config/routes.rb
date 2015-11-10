@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resource :users
+
   # namespace :api, path: '/', defaults: { format: 'json' } do
   #   scope module: :v1 do
   #

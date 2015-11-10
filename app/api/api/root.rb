@@ -17,7 +17,7 @@ module API
         # find token. Check if valid.
         token = ApiKey.where(access_token: params[:token]).first
         if token && !token.expired?
-          @current_user = Owner.find(token.user_id)
+          @current_user = User.find(token.user_id)
         else
           false
         end
