@@ -3,4 +3,9 @@ class Shop < ActiveRecord::Base
   has_many :promotions
   has_many :subscriptions
   has_many :users, through: :subscriptions
+  before_create :generate_identity
+
+  def generate_identity
+    self.identity = SecureRandom.urlsafe_base64
+  end
 end
