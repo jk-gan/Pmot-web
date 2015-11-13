@@ -5,9 +5,19 @@ module API
       format :json
 
       resource :shops do
-        desc "Return list of shops"
+        params do
+          requires :identity, type: String, desc: "Shop's identity."
+          requires :token, type: String, desc: "Access token."
+        end
+        desc "Return a shop"
         get do
-          Shop.all
+          authenticate!
+          shop = Shop.find_by(identity: params[:identity])
+          if shop
+            shop
+          else
+            ''
+          end
         end
       end
     end
