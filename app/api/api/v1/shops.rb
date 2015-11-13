@@ -19,6 +19,21 @@ module API
             ''
           end
         end
+
+        params do
+          requires :id, type: String, desc: "Shop's id."
+          requires :token, type: String, desc: "Access token."
+        end
+        desc "Subscribe a shop"
+        post :subscribe do
+          authenticate!
+          shop = Shop.find_by(id: params[:id])
+          if shop
+
+          else
+            ''
+          end
+        end
       end
     end
   end

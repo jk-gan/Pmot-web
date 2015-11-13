@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(version: 20151110173627) do
     t.text     "term_and_condition", limit: 65535
     t.datetime "starts_at"
     t.datetime "expires_at"
-    t.integer  "shops_id",           limit: 4
+    t.integer  "shop_id",            limit: 4
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
 
-  add_index "promotions", ["shops_id"], name: "index_promotions_on_shops_id", using: :btree
+  add_index "promotions", ["shop_id"], name: "index_promotions_on_shop_id", using: :btree
 
   create_table "shops", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -75,14 +75,14 @@ ActiveRecord::Schema.define(version: 20151110173627) do
   add_index "shops", ["owner_id"], name: "index_shops_on_owner_id", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer  "users_id",   limit: 4
-    t.integer  "shops_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "shop_id",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
-  add_index "subscriptions", ["shops_id"], name: "index_subscriptions_on_shops_id", using: :btree
-  add_index "subscriptions", ["users_id"], name: "index_subscriptions_on_users_id", using: :btree
+  add_index "subscriptions", ["shop_id"], name: "index_subscriptions_on_shop_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            limit: 255

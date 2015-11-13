@@ -6,7 +6,7 @@ class CreatePromotions < ActiveRecord::Migration
       t.text :term_and_condition
       t.datetime :starts_at
       t.datetime :expires_at
-      t.belongs_to :shops, index: true
+      t.belongs_to :shop, index: true
 
       t.timestamps null: false
     end
