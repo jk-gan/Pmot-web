@@ -266,7 +266,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener
-  mysql2 (~> 0.3.20)
+  mysql2
   protected_attributes
   rails (= 4.2.4)
   rqrcode_png

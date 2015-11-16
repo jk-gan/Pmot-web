@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :promotions
   resource :users
 
   # namespace :api, path: '/', defaults: { format: 'json' } do

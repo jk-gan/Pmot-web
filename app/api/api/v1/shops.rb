@@ -29,7 +29,8 @@ module API
           authenticate!
           shop = Shop.find_by(id: params[:id])
           if shop
-
+            current_user.shops << shop
+            current_user
           else
             ''
           end

@@ -1,0 +1,9 @@
+<h1>Promotions#index</h1>
+<p>Find me in app/views/promotions/index.html.erb</p>
+
+<% @promotions.each do |p| %>
+  <%= p.name %>
+  <%= p.description %>
+<% end %>
+
+<%= link_to 'Add new', new_promotion_path %>

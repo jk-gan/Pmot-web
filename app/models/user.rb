@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :created
 
+  private
+
   def default_values
     self.status ||= 0
   end
