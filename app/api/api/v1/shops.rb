@@ -21,6 +21,20 @@ module API
         end
 
         params do
+          requires :token, type: String, desc: "Access token."
+        end
+        desc "Return a list of subscribed shops"
+        get :subscribe do
+          authenticate!
+          shop = current_user.shops
+          if shop
+            shop
+          else
+            ''
+          end
+        end
+
+        params do
           requires :id, type: String, desc: "Shop's id."
           requires :token, type: String, desc: "Access token."
         end
