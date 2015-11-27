@@ -1,6 +1,6 @@
 class PromotionsController < ApplicationController
   def index
-    @promotions = Promotion.select(:name, :description).where(shop_id: current_owner.shop.id)
+    @promotions = Promotion.select(:name, :description, :starts_at, :expires_at).where(shop_id: current_owner.shop.id)
   end
 
   def show
