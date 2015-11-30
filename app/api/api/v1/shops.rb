@@ -26,9 +26,9 @@ module API
         desc "Return a list of subscribed shops"
         get :subscribe do
           authenticate!
-          shop = current_user.shops
-          if shop
-            shop
+          shops = current_user.shops
+          if shops
+            shops
           else
             ''
           end
@@ -42,11 +42,11 @@ module API
         post :subscribe do
           authenticate!
           shop = Shop.find_by(id: params[:id])
-          if shop
+          if shop && !current_user.shops.exists?(params[:id])
             current_user.shops << shop
             current_user
           else
-            ''
+            { id: '' }
           end
         end
       end
