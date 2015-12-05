@@ -35,6 +35,11 @@
           <%= sf.label :address %>
           <%= sf.text_area :address, placeholder: "Shop Address", id: 'address' %>
         </div>
+        <div>
+          <%= sf.file_field :image %>
+          <%= sf.hidden_field :image_cache %>
+        </div>
+
 
         <input type="button" id="check-location" value="Check Location">
 

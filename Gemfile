@@ -37,6 +37,10 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'grape'
 gem 'rubocop', require: false
 gem 'protected_attributes'
+gem 'carrierwave'
+gem 'mini_magick', '~> 4.3', '>= 4.3.6'
+gem 'gcm'
+gem 'sidekiq', '~> 4.0', '>= 4.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

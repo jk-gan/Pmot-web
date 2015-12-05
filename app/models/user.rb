@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :devices
   has_many :subscriptions
   has_many :shops, through: :subscriptions
 

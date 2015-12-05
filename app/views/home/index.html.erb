@@ -4,6 +4,7 @@
 <% if current_owner %>
   <p>Logged in as <%= current_owner.email %></p>
   <%= image_tag @qr %>
+  <%= image_tag current_owner.shop.image.medium.url %>
   <%= link_to 'Log out', destroy_owner_session_path, method: "delete" %>
   <%= link_to 'Promotions', promotions_path %>
 <% else %>

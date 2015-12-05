@@ -1,4 +1,6 @@
 class Shop < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
+
   belongs_to :owner
   has_many :promotions
   has_many :subscriptions
