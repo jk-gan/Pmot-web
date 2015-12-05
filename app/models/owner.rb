@@ -11,7 +11,7 @@ class Owner < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  accepts_nested_attributes_for :shop
+  accepts_nested_attributes_for :shop, allow_destroy: true
 
   def default_values
     self.status ||= 0

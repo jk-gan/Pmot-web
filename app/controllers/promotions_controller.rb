@@ -13,7 +13,7 @@ class PromotionsController < ApplicationController
   def create
     @promotion = current_owner.shop.promotions.new(promotion_params)
     if @promotion.save
-      @notification = Notification.new(title: "#{current_owner.shop.name}: #{@promotion.name}", message: "#{@promotion.description}")
+      @notification = Notification.new(title: "#{current_owner.shop.name}", message: "#{@promotion.name}")
       gcm = GCM.new('AIzaSyBkzGqh8gEHyKoTVjkt2TjJbi4uOmO8-1g')
       options = { data: { title: @notification.title, message: @notification.message}, collapse_key: 'updated_score' }
       # registration_ids = ['9']
@@ -22,7 +22,7 @@ class PromotionsController < ApplicationController
       redirect_to promotions_path
       flash[:notice] = "This promotion was successfully created"
     else
-      render 'new', error: "Something was wrong, please submit again"
+      render 'new', error: "Something w`as wrong, please submit again"
     end
   end
 
