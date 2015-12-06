@@ -8,10 +8,13 @@ module API
         params do
           requires :token, type: String, desc: "Access token."
         end
-        desc "Return list of all users"
+        desc "Return user data"
         get do
           authenticate!
-          User.all
+          {
+            token: params[:token],
+            user: { email: current_user.email, name: current_user.name }
+          }
         end
 
         params do
