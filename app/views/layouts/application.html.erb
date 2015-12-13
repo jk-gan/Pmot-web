@@ -3,6 +3,7 @@
 <head>
   <title>PmotWeb</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
@@ -23,10 +24,17 @@
 
 <%= yield %>
 
+<div id="c">
+       <div class="container">
+           <p>Pmot <a href="">SYSTEM</a></p>
+       </div>
+   </div>
+
 </script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFpszjIOdHth6I8QY88U5v2Mc8ce9m2PQ&callback=initMap">
 </script>
-
+<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
 </body>
 </html>

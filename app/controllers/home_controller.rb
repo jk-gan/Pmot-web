@@ -4,8 +4,10 @@ class HomeController < ApplicationController
    if owner_signed_in?
      if current_owner.admin?
        redirect_to admin_root_path
-     else
+     elsif current_owner.active?
        @qr = RQRCode::QRCode.new("Pmot@" + current_owner.shop.identity).to_img.resize(200, 200).to_data_url
+     elsif current_owner.inactive?
+       redirect_to edit_shop_path(current_owner.shop)
      end
    else
      redirect_to new_owner_session_path

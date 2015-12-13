@@ -1,4 +1,5 @@
 class Promotion < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
   belongs_to :shop
 
   # before_validation :default_values

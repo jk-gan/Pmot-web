@@ -1,0 +1,30 @@
+<h2>Shop Registration</h2>
+
+<%= form_for @shop do |f| %>
+  <%#= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: "Shop Name" %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description, placeholder: "Description" %>
+    </div>
+    <div class="field">
+      <%= f.label :address %>
+      <%= f.text_area :address, placeholder: "Shop Address", id: 'address' %>
+    </div>
+    <div>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+
+    <input type="button" id="check-location" value="Check Location">
+
+    <div id="map"></div>
+
+  <div class="actions">
+    <%= f.submit "Register" %>
+  </div>
+<% end %>

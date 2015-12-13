@@ -16,3 +16,6 @@
 //= require script
 //= require map
 //= require_tree .
+//= require bootstrap.min
+//= require prattbootstrap
+//= require bootstrap-datepicker

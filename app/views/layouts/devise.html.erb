@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head profile="http://gmpg.org/xfn/11">
+
+<title>Pmot</title>
+<%= stylesheet_link_tag    'devise', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'devise', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+<link href='http://fonts.googleapis.com/css?family=Roboto:900,900italic,500,400italic,100,700italic,300,700,500italic,100italic,300italic,400' rel='stylesheet' type='text/css'>
+
+</head>
+<body style="height: 100%; overflow: hidden; width: 100% !important; padding-top: 0px;">
+
+<div id="fback"><div class="girisback"></div><div class="kayitback"></div></div>
+
+<%= yield %>
+
+    <script type="text/javascript">//<![CDATA[
+    $(window).load(function(){
+    $('.form-control').on('focus blur', function (e) {
+        $(this).parents('.form-group').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
+    }).trigger('blur');
+    });//]]>
+    </script>
+
+	</body>
+</html>

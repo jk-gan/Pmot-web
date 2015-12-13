@@ -7,6 +7,7 @@ module API
       mount API::V1::Shops
       mount API::V1::Auth
       mount API::V1::Device
+      mount API::V1::Promotions
     end
   end
 end

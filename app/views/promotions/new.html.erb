@@ -1,5 +1,266 @@
-<h1>Promotions#new</h1>
-<p>Find me in app/views/promotions/new.html.erb</p>
+
+<!-- Fixed navbar -->
+        <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand"><b>PROMOTION SYSTEM</b></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li class=""><%= link_to 'Home', root_path %></li>
+                  <li class="active"><%= link_to 'New Promotion', new_promotion_path %></li>
+                  <li class=""><%= link_to 'Review Promotion', promotions_path %></li></ul>
+                            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class=""><a  class="smothscroll"><b><%= current_owner.email %></b></a></li>
+                            <li class=""><%= link_to 'Log out', destroy_owner_session_path, method: "delete" %></li>
+                            </ul>
+            <!-- <a class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><?=$_SESSION['idNum']; ?></a></a></p> -->
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <section id="home" name="home"></section>
+    <div id="headerwrappromo">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-12">
+                    <h1>NEW <b>Promotion</b></h1>
+                    <h3>Create your new promotion here!</h3>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="main-content-review">
+            <section class="wrapper">
+            <h3><i class="fa fa-angle-right"></i>Create New Promotion</h3>
+            <p><br></p>
+
+            <div class="form-panel">
+
+            <!--div class="form-group">
+            <div class="row">
+                <label class="col-sm-2 col-sm-2 control-label">Type Of Sale :</label>
+                  <div class="col-sm-5">
+                    <input type="text" name="tos" class="form-control round-form" size="10" id="tos">
+                untuk edit -->
+                <!-- <input type="text" name="fullname" class="form-control round-form" size="10" id="typeofsale" value="<?=$row['typeofsale']?>"> -->
+                  <!-- </div>
+            </div>
+          </div> -->
+
+          <%= form_for @promotion do |f| %>
+          <div class="form-group">
+          <div class="row">
+            <%= f.label :name, class: 'col-sm-2 col-sm-2 control-label' %>
+            <div class="col-sm-5">
+            <%= f.text_area :name, class: "form-control round-form", size: "40x5" %>
+          </div>
+        </div>
+      </div>
+
+
+
+            <div class="form-group">
+            <div class="row">
+            <%= f.label :description, class: 'col-sm-2 col-sm-2 control-label' %>
+            <div class="col-sm-5">
+            <%= f.text_area :description, class: "form-control round-form", size: "40x5" %>
+          </div>
+        </div>
+      </div>
+
+
+            <div class="form-group">
+            <div class="row">
+            <%= f.label :term_and_condition, class: 'col-sm-2 col-sm-2 control-label' %>
+            <div class="col-sm-5">
+            <%= f.text_area :term_and_condition, class: "form-control round-form", size: "40x5" %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+      <div class="row">
+            <%= f.label :starts_at, class: "col-sm-2 col-sm-2 control-label" %>
+            <div class="col-sm-5">
+            <%= f.text_field :starts_at, 'data-behaviour' => 'datepicker', 'data-provide' => 'datepicker', class: 'form-control datepicker', readonly: true, id: "startdate" %>
+            <!-- <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width: 300px; align="left" "> -->
+                <!-- <input class="form-control" type="text" value="" readonly> -->
+            <input type="hidden" id="dtpstart" value="" /><br/>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="form-group">
+        <div class="row">
+              <%= f.label :expires_at, class: "col-sm-2 col-sm-2 control-label" %>
+              <div class="col-sm-5">
+              <%= f.text_field :expires_at, 'data-behaviour' => 'datepicker', 'data-provide' => 'datepicker', class: 'form-control datepicker2', readonly: true %>
+              <!-- <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width: 300px; align="left" "> -->
+                  <!-- <input class="form-control" type="text" value="" readonly> -->
+              <input type="hidden" id="dtpstart" value="" /><br/>
+          </div>
+          </div>
+          </div>
+            <!-- <%= f.label :expires_at %>
+            <%= date_select :promotion, :expires_at %>
+            <br/> -->
+
+
+            <div class="form-group">
+            <div class="row">
+              <%= f.label :image, class: "col-sm-2 col-sm-2 control-label" %>
+              <div class="col-sm-3">
+              <%= f.file_field :image %>
+              <%= f.hidden_field :image_cache %>
+            </div>
+          </div>
+        </div>
+            <br/>
+            <%= f.submit 'Create' %>
+          <% end %>
+</div>
+
+</section>
+</section>
+
+
+<script type="text/javascript">
+
+// $('.form_datetime').datetimepicker({
+//         //language:  'fr',
+//         weekStart: 1,
+//         todayBtn:  1,
+//         autoclose: 1,
+//         todayHighlight: 1,
+//         startView: 2,
+//         forceParse: 0,
+//         showMeridian: 1
+//     });
+//     $('.form_date').datetimepicker({
+//         language:  'en',
+//         weekStart: 1,
+//         todayBtn:  1,
+//         autoclose: 1,
+//         todayHighlight: 1,
+//         startView: 2,
+//         minView: 2,
+//         forceParse: 0
+//     });
+
+    // $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
+    //   $(this).datepicker;
+    //   return {
+    //     format: "dd-mm-yyyy",
+    //     language:  'en',
+    //     weekStart: 1,
+    //     todayBtn:  1,
+    //     autoclose: 1,
+    //     todayHighlight: 1,
+    //     startView: 2,
+    //     minView: 2,
+    //     forceParse: 0,
+    //     startDate: "13 Dec"
+    //   };
+    // });
+
+    $(document).ready(function(){
+    $('.datepicker').datepicker({
+      startDate: new Date()
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf());
+        $('.datepicker2').datepicker('setStartDate', minDate);
+    });;
+  });
+
+  $(document).ready(function(){
+  $('.datepicker2').datepicker().on('changeDate', function (selected) {
+            var minDate = new Date(selected.date.valueOf());
+            $('.datepicker').datepicker('setEndDate', minDate);
+        });
+});
+
+</script>
+
+<!-- SWEETALERT -->
+<script type="text/javascript">
+        document.querySelector('.sweet-5').onclick = function(){
+        swal({
+          title: "Are you sure you want to sign out?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-primary',
+          confirmButtonText: 'Yes, I want to leave!',
+          cancelButtonText: "No, go back!",
+          closeOnConfirm: false,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+          if (isConfirm){
+            window.location.href = 'login.html';
+          } else {
+            swal("Cancelled");
+          }
+        });
+      };
+    </script>
+
+    <script type="text/javascript">
+        document.querySelector('.sweet-3').onclick = function(){
+        swal({
+          title: "PRODUCT SUCCESFULLY ADDED",
+          type: "success",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-primary',
+          confirmButtonText: 'OK',
+          cancelButtonText: "ADD NEW!",
+          closeOnConfirm: false,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+          if (isConfirm){
+            window.location.href = 'ownerpage.html';
+          } else {
+            swal("Please Add");
+          }
+        });
+      };
+    </script>
+<!-- SWEETALERT -->
+
+<script>
+   function previewFile(){
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+  previewFile();  //calls the function named previewFile()
+  </script>
+
+
+<!--
 
 <%= form_for @promotion do |f| %>
   <%= f.label :name %>
@@ -17,7 +278,10 @@
   <%= f.label :expires_at %>
   <%= date_select :promotion, :expires_at %>
   <br/>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  <br/>
   <%= f.submit 'Create' %>
 <% end %>
 
-<%= button_tag 'Back', id: 'back-btn', type: 'button' %>
+<%= button_tag 'Back', id: 'back-btn', type: 'button' %> -->

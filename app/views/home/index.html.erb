@@ -1,12 +1,151 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<!-- <h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p> -->
 
-<% if current_owner %>
-  <p>Logged in as <%= current_owner.email %></p>
+<% if current_owner.active? %>
+  <!-- <p>Logged in as <%= current_owner.email %></p> -->
+
+  <!-- Fixed navbar -->
+          <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"><b>Pmot SYSTEM</b></a>
+              </div>
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                              <li class="active"><%= link_to 'Home', root_path %></li>
+                              <li class=""><%= link_to 'New Promotion', new_promotion_path %></li>
+                              <li class=""><%= link_to 'Review Promotion', promotions_path %></li></ul>
+                              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                      <li class=""><a  class="smothscroll"><b><%= current_owner.email %></b></a></li>
+                              <li class=""><%= link_to 'Log out', destroy_owner_session_path, method: "delete" %></li>
+                              </ul>
+              <!-- <a class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><?=$_SESSION['idNum']; ?></a></a></p> -->
+                </div>
+                </div>
+              </div><!--/.nav-collapse -->
+            </div>
+
+
+             <section id="home" name="home"></section>
+      <div id="headerwrap">
+          <div class="container">
+              <div class="row centered">
+                  <div class="col-lg-12">
+                      <h1>Welcome To <b>Pmot System</b></h1>
+                      <h3>Help you to promote your product</h3>
+                      <br>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <section id="promo" name="promo"></section>
+      <!-- INTRO WRAP -->
+      <div id="intro">
+          <div class="container">
+              <div class="row centered">
+                  <h1></h1>
+                  <br>
+                  <br>
+                  <div class="col-lg-3">
+                  <!-- <a href="newpromotionpage.html"> -->
+                    <%= link_to "#{image_tag('promotion1.png')} <h3>Create New Promotion</h3>
+                    <p>Create a new promotion to be on sale</p>".html_safe, new_promotion_path %>
+                      <!-- <img src="../picture/promotion1.png" alt=""> -->
+                      <!-- <h3>Create New Promotion</h3>
+                      <p>Create a new promotion to be on sale</p> -->
+                  </div>
+                  <!--div class="col-lg-3">
+                  <a href="ownerreviewcomments.html">
+                      <img src="../picture/comment3.jpg" alt="">
+                      <h3>Review Comments</h3>
+                      <p>View all comments from customers regarding the apps</p>
+                  </div-->
+                  <div class="col-lg-3">
+                  <!-- <a href="reviewpromotionpage.html"> -->
+                    <!-- <%= image_tag 'review1.png' %> -->
+                      <!-- <img src="../picture/review1.png" alt=""> -->
+                      <%= link_to "#{image_tag('review1.png')} <h3>Review Promotion</h3>
+                      <p>View all promotion</p>".html_safe, promotions_path %>
+                      <!-- <h3>Review Promotion</h3>
+                      <p>View all promotion</p> -->
+                      <!-- </a> -->
+                  </div>
+                  <div class="col-lg-3">
+                      <!-- <img src="../picture/qrcode.png" alt=""> -->
+                      <%= image_tag @qr %>
+                      <h3>QR code</h3>
+                  </div>
+                  <div class="col-lg-3">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <i class="glyphicon glyphicon-bell"></i> Notifications Panel
+                          </div>
+                          <!-- /.panel-heading -->
+                          <div class="panel-body">
+                              <div class="list-group">
+                                  <a href="#" class="list-group-item">
+                                      <i class="glyphicon glyphicon-user"></i> Followers
+                                      <span class="pull-right text-muted small"><em>number followers</em>
+                                      </span>
+                                  </a>
+                                  <a href="#" class="list-group-item">
+                                      <i class="glyphicon glyphicon-thumbs-up"></i> Like
+                                      <span class="pull-right text-muted small"><em>number like</em>
+                                      </span>
+                                  </a>
+                                  <a href="#" class="list-group-item">
+                                      <span class="glyphicon glyphicon-envelope"></span> Current promo
+                                      <span class="pull-right text-muted small"><em>number promo</em>
+                                      </span>
+                                  </a>
+                                  </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <script src="../JS/prattbootstrap.js"></script>
+
+      <!-- SWEETALERT -->
+  <script type="text/javascript">
+    		document.querySelector('.sweet-5').onclick = function(){
+          swal({
+            title: "Are you sure you want to sign out?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: 'btn-primary',
+            confirmButtonText: 'Yes, I want to leave!',
+            cancelButtonText: "No, go back!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+          },
+          function(isConfirm){
+            if (isConfirm){
+              window.location.href = 'login.html';
+            } else {
+              swal("Cancelled");
+            }
+          });
+        };
+      </script>
+  <!-- SWEETALERT -->
+
+<!--
   <%= image_tag @qr %>
   <%= image_tag current_owner.shop.image.thumb.url %>
   <%= link_to 'Log out', destroy_owner_session_path, method: "delete" %>
-  <%= link_to 'Promotions', promotions_path %>
+  <%= link_to 'Promotions', promotions_path %> -->
+<% elsif current_owner.inactive? %>
+  <%= link_to 'Log out', destroy_owner_session_path, method: "delete" %>
 <% else %>
   <%= link_to 'Sign up', new_owner_registration_path %> or
   <%= link_to 'Log in', new_owner_session_path %>

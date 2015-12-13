@@ -1,6 +1,6 @@
 class PromotionsController < ApplicationController
   def index
-    @promotions = Promotion.select(:name, :description, :starts_at, :expires_at).where(shop_id: current_owner.shop.id)
+    @promotions = Promotion.select(:id, :name, :description, :term_and_condition, :starts_at, :expires_at).where(shop_id: current_owner.shop.id)
   end
 
   def show
@@ -33,11 +33,14 @@ class PromotionsController < ApplicationController
   end
 
   def destroy
+    @promotion = Promotion.find(params[:id])
+    @promotion.destroy
+    redirect_to promotions_path
   end
 
   private
 
   def promotion_params
-    params.require(:promotion).permit(:name, :description, :term_and_condition, :starts_at, :expires_at)
+    params.require(:promotion).permit(:name, :description, :term_and_condition, :starts_at, :expires_at, :image)
   end
 end

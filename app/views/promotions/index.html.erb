@@ -1,18 +1,137 @@
-<h1>Promotions#index</h1>
-<p>Find me in app/views/promotions/index.html.erb</p>
-
-<table>
-  <% @promotions.each do |p| %>
-  <tr>
-    <td><%= p.name %></td>
-    <td><%= p.description %></td>
-    <td><%= p.starts_at.strftime("%d %B %Y") %></td>
-    <td><%= p.expires_at.strftime("%d %B %Y") %></td>
-  </tr>
-
-  <% end %>
-</table>
 
 
-<%= link_to 'Add new', new_promotion_path %>
-<%= link_to 'Home', root_path %>
+<!-- Fixed navbar -->
+        <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand"><b>PROMOTION SYSTEM</b></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li class=""><%= link_to 'Home', root_path %></li>
+                  <li class=""><%= link_to 'New Promotion', new_promotion_path %></li>
+                  <li class="active"><%= link_to 'Review Promotion', promotions_path %></li></ul>
+                            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class=""><a  class="smothscroll"><b><%= current_owner.email %></b></a></li>
+                            <li class=""><%= link_to 'Log out', destroy_owner_session_path, method: "delete" %></li>
+                            </ul>
+            <!-- <a class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><?=$_SESSION['idNum']; ?></a></a></p> -->
+              </div>
+              </div>
+            </div><!--/.nav-collapse -->
+          </div>
+
+          <section id="home" name="home"></section>
+    <div id="headerwrapdatatables">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-12">
+                    <h1>PREVIOUS <b>Promotion</b></h1>
+                    <h3>View all list of promotions that has been promote using this system</h3>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="main-content-review">
+            <section class="wrapper">
+            <h3><i class="fa fa-angle-right"></i>Previous Promotion</h3>
+            <p><br></p>
+
+            <div class="form-panel">
+
+                <!-- <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+    $('#Datatables').DataTable( {
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    } );
+} );
+    </script> -->
+
+    <table id="myTable" class="table table-striped table-hover table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Term and Condition</th>
+                    <th>Starts at</th>
+                    <th>Expires at</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% @promotions.each do |p| %>
+              <tr>
+                <td><%= p.name %></td>
+                <td><%= p.description %></td>
+                <td><%= p.term_and_condition %></td>
+                <td><%= p.starts_at.strftime("%d %B %Y") %></td>
+                <td><%= p.expires_at.strftime("%d %B %Y") %></td>
+                <td><%= link_to '<button type="button" class="btn btn-danger">Delete</button>'.html_safe, promotion_path(p.id), method: :delete, data: { confirm: "Are you sure?" } %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+
+
+
+    </section>
+</section>
+
+
+<script type="text/javascript">
+      //
+      //   document.querySelector('.sweet-5').onclick = function(){
+      //   swal({
+      //     title: "Are you sure you want to sign out?",
+      //     type: "warning",
+      //     showCancelButton: true,
+      //     confirmButtonClass: 'btn-primary',
+      //     confirmButtonText: 'Yes, I want to leave!',
+      //     cancelButtonText: "No, go back!",
+      //     closeOnConfirm: false,
+      //     closeOnCancel: false
+      //   },
+      //   function(isConfirm){
+      //     if (isConfirm){
+      //       window.location.href = 'login.html';
+      //     } else {
+      //       swal("Cancelled");
+      //     }
+      //   });
+      // };
+
+      $(document).ready(function(){
+    $('#myTable').DataTable();
+});
+
+    </script>
+<!-- SWEETALERT -->

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206081718) do
+ActiveRecord::Schema.define(version: 20151208074846) do
 
   create_table "api_keys", force: :cascade do |t|
     t.string   "access_token", limit: 255
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20151206081718) do
     t.integer  "shop_id",            limit: 4
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "image",              limit: 255
   end
 
   add_index "promotions", ["shop_id"], name: "index_promotions_on_shop_id", using: :btree
