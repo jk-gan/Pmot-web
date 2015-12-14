@@ -1,5 +1,39 @@
-<h2>Shop Registration</h2>
-
+<!-- Fixed navbar -->
+        <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand"><b>Pmot SYSTEM</b></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+                            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class=""><a  class="smothscroll"><b><%= current_owner.email %></b></a></li>
+                            <li class=""><%= link_to 'Log out', destroy_owner_session_path, method: "delete" %></li>
+                            </ul>
+            <!-- <a class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><?=$_SESSION['idNum']; ?></a></a></p> -->
+              </div>
+              </div>
+            </div>
+          </div>
+          <div id="headerwrapdatatables">
+              <div class="container">
+                  <div class="row centered">
+                      <div class="col-lg-12">
+                          <h1>Shop <b>Registration</b></h1>
+                          <h3>Register your shop into the Pmot SYSTEM</h3>
+                          <br>
+                      </div>
+                  </div>
+              </div>
+          </div>
+<section id="main-content-review">
+<div class="form-panel">
 <%= form_for @shop do |f| %>
   <%#= devise_error_messages! %>
 
@@ -15,16 +49,20 @@
       <%= f.label :address %>
       <%= f.text_area :address, placeholder: "Shop Address", id: 'address' %>
     </div>
-    <div>
-      <%= f.file_field :image %>
-      <%= f.hidden_field :image_cache %>
-    </div>
+
 
     <input type="button" id="check-location" value="Check Location">
 
     <div id="map"></div>
 
+    <div>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+
   <div class="actions">
     <%= f.submit "Register" %>
   </div>
 <% end %>
+</div>
+</section>

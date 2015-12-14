@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   resources :promotions
   resource :users
   resources :shops, only: [:edit, :update]
+
+  mount Sidekiq::Web => '/sidekiq'
 
   # namespace :api, path: '/', defaults: { format: 'json' } do
   #   scope module: :v1 do

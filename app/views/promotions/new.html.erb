@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand"><b>PROMOTION SYSTEM</b></a>
+              <a class="navbar-brand"><b>Pmot SYSTEM</b></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -93,7 +93,7 @@
       <div class="row">
             <%= f.label :starts_at, class: "col-sm-2 col-sm-2 control-label" %>
             <div class="col-sm-5">
-            <%= f.text_field :starts_at, 'data-behaviour' => 'datepicker', 'data-provide' => 'datepicker', class: 'form-control datepicker', readonly: true, id: "startdate" %>
+            <%= f.text_field :starts_at, class: 'form-control datepicker', readonly: true, id: "startdate" %>
             <!-- <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width: 300px; align="left" "> -->
                 <!-- <input class="form-control" type="text" value="" readonly> -->
             <input type="hidden" id="dtpstart" value="" /><br/>
@@ -106,7 +106,7 @@
         <div class="row">
               <%= f.label :expires_at, class: "col-sm-2 col-sm-2 control-label" %>
               <div class="col-sm-5">
-              <%= f.text_field :expires_at, 'data-behaviour' => 'datepicker', 'data-provide' => 'datepicker', class: 'form-control datepicker2', readonly: true %>
+              <%= f.text_field :expires_at, class: 'form-control datepicker2', readonly: true %>
               <!-- <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" style="width: 300px; align="left" "> -->
                   <!-- <input class="form-control" type="text" value="" readonly> -->
               <input type="hidden" id="dtpstart" value="" /><br/>
@@ -138,46 +138,10 @@
 
 <script type="text/javascript">
 
-// $('.form_datetime').datetimepicker({
-//         //language:  'fr',
-//         weekStart: 1,
-//         todayBtn:  1,
-//         autoclose: 1,
-//         todayHighlight: 1,
-//         startView: 2,
-//         forceParse: 0,
-//         showMeridian: 1
-//     });
-//     $('.form_date').datetimepicker({
-//         language:  'en',
-//         weekStart: 1,
-//         todayBtn:  1,
-//         autoclose: 1,
-//         todayHighlight: 1,
-//         startView: 2,
-//         minView: 2,
-//         forceParse: 0
-//     });
-
-    // $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
-    //   $(this).datepicker;
-    //   return {
-    //     format: "dd-mm-yyyy",
-    //     language:  'en',
-    //     weekStart: 1,
-    //     todayBtn:  1,
-    //     autoclose: 1,
-    //     todayHighlight: 1,
-    //     startView: 2,
-    //     minView: 2,
-    //     forceParse: 0,
-    //     startDate: "13 Dec"
-    //   };
-    // });
-
     $(document).ready(function(){
     $('.datepicker').datepicker({
-      startDate: new Date()
+      startDate: new Date(),
+      format: 'yyyy-mm-dd'
     }).on('changeDate', function (selected) {
         var minDate = new Date(selected.date.valueOf());
         $('.datepicker2').datepicker('setStartDate', minDate);
@@ -185,7 +149,9 @@
   });
 
   $(document).ready(function(){
-  $('.datepicker2').datepicker().on('changeDate', function (selected) {
+  $('.datepicker2').datepicker({
+    format: 'yyyy-mm-dd'
+  }).on('changeDate', function (selected) {
             var minDate = new Date(selected.date.valueOf());
             $('.datepicker').datepicker('setEndDate', minDate);
         });
@@ -193,71 +159,6 @@
 
 </script>
 
-<!-- SWEETALERT -->
-<script type="text/javascript">
-        document.querySelector('.sweet-5').onclick = function(){
-        swal({
-          title: "Are you sure you want to sign out?",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonClass: 'btn-primary',
-          confirmButtonText: 'Yes, I want to leave!',
-          cancelButtonText: "No, go back!",
-          closeOnConfirm: false,
-          closeOnCancel: false
-        },
-        function(isConfirm){
-          if (isConfirm){
-            window.location.href = 'login.html';
-          } else {
-            swal("Cancelled");
-          }
-        });
-      };
-    </script>
-
-    <script type="text/javascript">
-        document.querySelector('.sweet-3').onclick = function(){
-        swal({
-          title: "PRODUCT SUCCESFULLY ADDED",
-          type: "success",
-          showCancelButton: true,
-          confirmButtonClass: 'btn-primary',
-          confirmButtonText: 'OK',
-          cancelButtonText: "ADD NEW!",
-          closeOnConfirm: false,
-          closeOnCancel: false
-        },
-        function(isConfirm){
-          if (isConfirm){
-            window.location.href = 'ownerpage.html';
-          } else {
-            swal("Please Add");
-          }
-        });
-      };
-    </script>
-<!-- SWEETALERT -->
-
-<script>
-   function previewFile(){
-       var preview = document.querySelector('img'); //selects the query named img
-       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-       var reader  = new FileReader();
-
-       reader.onloadend = function () {
-           preview.src = reader.result;
-       }
-
-       if (file) {
-           reader.readAsDataURL(file); //reads the data as a URL
-       } else {
-           preview.src = "";
-       }
-  }
-
-  previewFile();  //calls the function named previewFile()
-  </script>
 
 
 <!--
