@@ -58,6 +58,18 @@
           </div> -->
 
           <%= form_for @promotion do |f| %>
+          <% if @promotion.errors.any? %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <ul>
+                <% @promotion.errors.full_messages.each do |msg| %>
+                  <div class="error-message">
+                    <li><%= msg %></li>
+                  </div>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           <div class="form-group">
           <div class="row">
             <%= f.label :name, class: 'col-sm-2 col-sm-2 control-label' %>
@@ -139,23 +151,25 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-    $('.datepicker').datepicker({
-      startDate: new Date(),
-      format: 'yyyy-mm-dd'
-    }).on('changeDate', function (selected) {
-        var minDate = new Date(selected.date.valueOf());
-        $('.datepicker2').datepicker('setStartDate', minDate);
-    });;
-  });
+      $('.datepicker').datepicker({
+        startDate: new Date(),
+        clearBtn: true,
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+      }).on('changeDate', function (selected) {
+          var minDate = new Date(selected.date.valueOf());
+          $('.datepicker2').datepicker('setStartDate', minDate);
+      });
 
-  $(document).ready(function(){
-  $('.datepicker2').datepicker({
-    format: 'yyyy-mm-dd'
-  }).on('changeDate', function (selected) {
-            var minDate = new Date(selected.date.valueOf());
-            $('.datepicker').datepicker('setEndDate', minDate);
-        });
-});
+      $('.datepicker2').datepicker({
+        format: 'yyyy-mm-dd',
+        clearBtn: true,
+        autoclose: true
+      }).on('changeDate', function (selected) {
+                var minDate = new Date(selected.date.valueOf());
+                $('.datepicker').datepicker('setEndDate', minDate);
+            });
+    });
 
 </script>
 

@@ -13,12 +13,16 @@ class PromotionsController < ApplicationController
   def create
     @promotion = current_owner.shop.promotions.new(promotion_params)
     if @promotion.save
-      NotificationWorker.perform_async(@promotion.id)
-      
+      NotificationWorker.perform_async(@promotion.id, current_owner.id)
+      # @notification = Notification.create(title: "#{current_owner.shop.name}", message: "#{@promotion.name}")
+      # gcm = GCM.new('AIzaSyBkzGqh8gEHyKoTVjkt2TjJbi4uOmO8-1g')
+      # options = { data: { title: @notification.title, message: @notification.message}, collapse_key: 'updated_score' }
+      # registration_ids = Device.where(user_id: current_owner.shop.users.pluck(:id)).pluck(:token)
+      # response = gcm.send(registration_ids, options)
       redirect_to promotions_path
       flash[:notice] = "This promotion was successfully created"
     else
-      render 'new', error: "Something w`as wrong, please submit again"
+      render 'new', error: "Something was wrong, please submit again"
     end
   end
 

@@ -30,12 +30,32 @@
                           <br>
                       </div>
                   </div>
+
+                  <% if flash[:alert] %>
+                    <div class = "error-message-title">
+                      <%= flash[:alert] %>
+                    </div>
+                  <% end %>
+
+
               </div>
           </div>
 <section id="main-content-review">
 <div class="form-panel">
 <%= form_for @shop do |f| %>
   <%#= devise_error_messages! %>
+  <% if @shop.errors.any? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <ul>
+        <% @shop.errors.full_messages.each do |msg| %>
+          <div class="error-message">
+            <li><%= msg %></li>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
     <div class="field">
       <%= f.label :name %>
@@ -44,6 +64,10 @@
     <div class="field">
       <%= f.label :description %>
       <%= f.text_area :description, placeholder: "Description" %>
+    </div>
+    <div class="field">
+      <%= f.label :phone %>
+      <%= f.text_area :phone, placeholder: "Phone" %>
     </div>
     <div class="field">
       <%= f.label :address %>

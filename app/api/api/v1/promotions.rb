@@ -19,6 +19,21 @@ module API
           #   ''
           # end
         end
+
+        params do
+          requires :token, type: String, desc: "Access token."
+        end
+        desc "Return all promotions of the subscribed shops"
+        get '/:id' do
+          authenticate!
+          promotion = Promotion.joins(:shop).where(id: params[:id]).select('promotions.*', 'promotions.id', 'promotions.name AS pName', 'shops.name, shops.id AS sId, shops.address').first
+
+          # if shop
+          #   shop
+          # else
+          #   ''
+          # end
+        end
       end
     end
   end

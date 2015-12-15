@@ -2,8 +2,8 @@ class OwnerRegistrationsController < Devise::RegistrationsController
 
   def create
     @owner = Owner.new(sign_up_params)
-    @owner.create_shop
     if @owner.save
+      @owner.create_shop
       redirect_to root_path
     else
       redirect_to new_owner_session_path
