@@ -13,6 +13,9 @@ class Owner < ActiveRecord::Base
 
   accepts_nested_attributes_for :shop, allow_destroy: true
 
+  validates :email, presence: true
+  validates :password, presence: true
+
   def default_values
     self.status ||= 0
     self.role ||= 1

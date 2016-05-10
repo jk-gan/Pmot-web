@@ -7,6 +7,7 @@ class OwnerRegistrationsController < Devise::RegistrationsController
       redirect_to root_path
     else
       redirect_to new_owner_session_path
+      # redirect_to new_owner_session_path
     end
   end
 

@@ -11,8 +11,12 @@ module API
         desc "Return all promotions of the subscribed shops"
         get do
           authenticate!
-          promotion = Promotion.joins(:shop).where('shop_id IN (?) AND expires_at > ?', current_user.shops.pluck(:id), Date.today).select('promotions.*', 'promotions.id', 'promotions.name AS pName', 'shops.name, shops.id AS sId, shops.address').order(created_at: :desc)
-
+          promotion = Promotion.joins(:shop).where('shop_id IN (?) AND expires_at > ?', current_user.shops.pluck(:id), Date.today).select('promotions.*', 'promotions.id', 'promotions.name AS pName', 'shops.name, shops.id AS sId, shops.address, shops.phone').order(created_at: :desc)
+          # promotion.each do |p|
+          #   p[:starts_at] = p[:starts_at].strftime("%d %B %Y")
+          #   p[:expires_at] = p[:expires_at].strftime("%d %B %Y")
+          # end
+          # return promotion
           # if shop
           #   shop
           # else
@@ -26,7 +30,7 @@ module API
         desc "Return all promotions of the subscribed shops"
         get '/:id' do
           authenticate!
-          promotion = Promotion.joins(:shop).where(id: params[:id]).select('promotions.*', 'promotions.id', 'promotions.name AS pName', 'shops.name, shops.id AS sId, shops.address').first
+          promotion = Promotion.joins(:shop).where(id: params[:id]).select('promotions.*', 'promotions.id', 'promotions.name AS pName', 'shops.name, shops.id AS sId, shops.address, shops.phone').first
 
           # if shop
           #   shop

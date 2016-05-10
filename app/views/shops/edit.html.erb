@@ -14,7 +14,7 @@
                             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class=""><a  class="smothscroll"><b><%= current_owner.email %></b></a></li>
-                            <li class=""><%= link_to 'Log out', destroy_owner_session_path, method: "delete" %></li>
+                            <li class=""><%= link_to 'Log out', destroy_owner_session_path, method: :delete %></li>
                             </ul>
             <!-- <a class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><?=$_SESSION['idNum']; ?></a></a></p> -->
               </div>
@@ -42,6 +42,10 @@
           </div>
 <section id="main-content-review">
 <div class="form-panel">
+
+  <% flash.each do |key, value| %>
+     <div class="flash <%= key %>"><%= value %></div>
+  <% end %>
 <%= form_for @shop do |f| %>
   <%#= devise_error_messages! %>
   <% if @shop.errors.any? %>
@@ -57,35 +61,68 @@
     </div>
   <% end %>
 
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "Shop Name" %>
+    <div class="form-group">
+    <div class="row">
+      <%= f.label :name, class: 'col-sm-2 col-sm-2 control-label' %>
+      <div class="col-sm-5">
+      <%= f.text_field :name, class: "form-control round-form", placeholder: "Shop Name" %>
     </div>
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description, placeholder: "Description" %>
-    </div>
-    <div class="field">
-      <%= f.label :phone %>
-      <%= f.text_area :phone, placeholder: "Phone" %>
-    </div>
-    <div class="field">
-      <%= f.label :address %>
-      <%= f.text_area :address, placeholder: "Shop Address", id: 'address' %>
-    </div>
+  </div>
+</div>
 
+<div class="form-group">
+<div class="row">
+      <%= f.label :description, class: 'col-sm-2 col-sm-2 control-label' %>
+      <div class="col-sm-5">
+      <%= f.text_area :description, placeholder: "Description", class: "form-control round-form", size: "40x5" %>
+    </div>
+  </div>
+</div>
 
-    <input type="button" id="check-location" value="Check Location">
+<div class="form-group">
+<div class="row">
+      <%= f.label :phone, class: 'col-sm-2 col-sm-2 control-label' %>
+      <div class="col-sm-5">
+      <%= f.text_field :phone, placeholder: "Phone", class: "form-control round-form" %>
+    </div>
+  </div>
+</div>
 
+<div class="form-group">
+<div class="row">
+      <%= f.label :address, class: 'col-sm-2 col-sm-2 control-label' %>
+      <div class="col-sm-5">
+      <%= f.text_area :address, placeholder: "Shop Address", id: 'address', class: "form-control round-form", size: "40x5" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+<div class="row">
+  <div class="col-sm-2 col-sm-offset-2">
+    <input type="button" id="check-location" value="Check Location" class= "btn btn-default">
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-7 col-sm-offset-2">
     <div id="map"></div>
+  </div>
+  </div>
+  </div>
 
-    <div>
-      <%= f.file_field :image %>
+  <div class="form-group">
+  <div class="row">
+      <%= f.label :image, class: 'col-sm-2 col-sm-2 control-label' %>
+      <div class="col-sm-5">
+      <%= f.file_field :image, class: "form-control" %>
       <%= f.hidden_field :image_cache %>
+    </div>
+  </div>
     </div>
 
   <div class="actions">
-    <%= f.submit "Register" %>
+    <%= f.submit "Register", class: "btn btn-default" %>
   </div>
 <% end %>
 </div>

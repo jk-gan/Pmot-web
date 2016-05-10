@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
-      @shop.owner.update(status: 1) if @shop.owner.inactive?
+      @shop.owner.update_attribute(:status, 1) if @shop.owner.inactive?
       flash[:success] = "#{@shop.name} updated."
       redirect_to root_path
     else

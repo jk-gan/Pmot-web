@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   require 'rqrcode_png'
   def index
-   if owner_signed_in?
+   if current_owner
      if current_owner.admin?
        redirect_to admin_root_path
      elsif current_owner.active?

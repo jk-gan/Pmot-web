@@ -46,7 +46,7 @@ module API
           if user.save
             user
           else
-            user
+            {emdil: ""}
           end
         end
       end

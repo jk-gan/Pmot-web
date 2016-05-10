@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :created
 
+  validates :email, uniqueness: true
+
   private
 
   def default_values
